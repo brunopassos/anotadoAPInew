@@ -17,7 +17,7 @@ const createNoteService = async (noteData:INote, id:string):  Promise<INoteRetur
     }
 
     const note = noteRepository.create({
-        title: noteData.title,
+        title: noteData.title ? noteData.title : "",
         content: noteData.content,
         user: findUser
     })
