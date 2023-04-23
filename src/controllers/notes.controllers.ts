@@ -8,6 +8,7 @@ import deleteNoteService from "../services/notes/deleteNote.service";
 
 
 const createNoteController = async (req: Request, res: Response) => {
+
   const noteData: INote = req.body;
   const token = req.headers.authorization?.split(" ")[1];
 
@@ -17,7 +18,7 @@ const createNoteController = async (req: Request, res: Response) => {
     token as string,
     process.env.SECRET_KEY as string,
     (err, decoded: any) => {
-      id = decoded.id;
+      id = decoded.sub;
     }
   );
 
