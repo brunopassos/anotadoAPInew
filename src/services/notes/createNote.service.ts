@@ -7,6 +7,7 @@ import { INote, INoteReturn } from "../../interfaces/note.interfaces";
 import { returnNoteSchema } from "../../schemas/note.schemas";
 
 const createNoteService = async (noteData:INote, id:string):  Promise<INoteReturn> => {
+
     const noteRepository: Repository<Note> = AppDataSource.getRepository(Note);
     const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
