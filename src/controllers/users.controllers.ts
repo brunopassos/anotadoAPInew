@@ -3,6 +3,7 @@ import { IUser } from "../interfaces/user.interface";
 import createUserService from "../services/users/createUser.service";
 import listOneUserService from "../services/users/listOneUser.service";
 import listUserNotesService from "../services/users/listUserNotes.service";
+import { instanceToPlain } from "class-transformer";
 
 const createUserController = async (req: Request, res: Response) => {
   const userData: IUser = req.body;
@@ -31,7 +32,7 @@ const listUserNotesController = async (req: Request, res: Response) => {
 
   const userNotes = await listUserNotesService(userEmail);
 
-  return res.status(200).json(userNotes);
+  return res.status(200).json(instanceToPlain(userNotes));
 }
 
 export {

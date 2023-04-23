@@ -6,6 +6,7 @@ import listNotesService from "../services/notes/listNotes.service";
 import updateNoteService from "../services/notes/updateNote.service";
 import deleteNoteService from "../services/notes/deleteNote.service";
 
+
 const createNoteController = async (req: Request, res: Response) => {
   const noteData: INote = req.body;
   const token = req.headers.authorization?.split(" ")[1];
