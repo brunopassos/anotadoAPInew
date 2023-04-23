@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 
 const ensureTokenIsValidMiddleware = (req: Request, res: Response, next: NextFunction): Response | void=> {
-    let token = req.headers.authorization;
+    let token: string | undefined = req.headers.authorization;
 
     if(!token){
         throw new AppError("Token is missing", 401);
