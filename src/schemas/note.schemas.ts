@@ -3,7 +3,7 @@ import { returnUserSchema } from "./user.schemas";
 
 
 const noteSchema = z.object({
-    title: z.string(),
+    title: z.string().optional(),
     content: z.string().min(1)
 })
 
