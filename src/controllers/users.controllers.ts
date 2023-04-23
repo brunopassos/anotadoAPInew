@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { IUser } from "../interfaces/user.interface";
 import createUserService from "../services/users/createUser.service";
 import listOneUserService from "../services/users/listOneUser.service";
+import listUserNotesService from "../services/users/listUserNotes.service";
 
 const createUserController = async (req: Request, res: Response) => {
   const userData: IUser = req.body;
@@ -24,7 +25,17 @@ const listOneUserController = async (req: Request, res: Response) => {
   });
 };
 
+const listUserNotesController = async (req: Request, res: Response) => {
+  
+  const userEmail: string = req.user.email;
+
+  const userNotes = await listUserNotesService(userEmail);
+
+  return res.status(200).json(userNotes);
+}
+
 export {
     createUserController,
-    listOneUserController
+    listOneUserController,
+    listUserNotesController
 };
